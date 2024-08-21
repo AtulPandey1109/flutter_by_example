@@ -11,6 +11,7 @@ class TodoApi extends StatefulWidget {
 class _TodoApiState extends State<TodoApi> {
   List<dynamic>todoMap=[];
   void getTodos() async{
+    await Future.delayed(const Duration(seconds: 2));
  Response response = await get(Uri.parse('https://jsonplaceholder.typicode.com/todos'));
 setState(() {
  todoMap.addAll(jsonDecode(response.body));
@@ -40,7 +41,7 @@ setState(() {
 
                 ),
               Expanded(
-                child: ListView.separated(
+                child: todoMap.isEmpty?const Center(child: CircularProgressIndicator(),):ListView.separated(
                 itemCount: todoMap.length,
                 itemBuilder: (BuildContext context, int index){
                   final todo =todoMap[index];
@@ -72,3 +73,5 @@ setState(() {
     );
   }
 }
+
+

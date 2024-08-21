@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../model/info.dart';
+import '../model/topics.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,14 +13,14 @@ class HomeScreen extends StatelessWidget {
         ),
         body: ListView.separated(
             itemBuilder: (BuildContext context,int index){
-              final information = Information.getDetails();
+              final topics = Topics.getDetails();
               return ListTile(
                 title: ListTile(
                   leading: Text('${index+1}',style: const TextStyle(fontSize: 15),),
-                  title: Text(information[index].title),
+                  title: Text(topics[index].title),
                   tileColor: Colors.lightGreenAccent,
                   trailing: IconButton(icon:const Icon(Icons.arrow_forward),onPressed: (){
-                    Navigator.pushNamed(context, information[index].route);
+                    Navigator.pushNamed(context, topics[index].route);
                   },),
                 ),
               );
@@ -28,8 +28,9 @@ class HomeScreen extends StatelessWidget {
             separatorBuilder: (BuildContext context, int index){
               return const SizedBox(height: 10,);
             },
-            itemCount: Information.getDetails().length),
+            itemCount: Topics.getDetails().length),
       ),
     );
   }
 }
+

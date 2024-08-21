@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:my_login_app/screens/bottom_tab_example.dart';
+import 'package:my_login_app/screens/drawer_example.dart';
 import 'package:my_login_app/screens/image_assets.dart';
 import 'package:my_login_app/screens/gallery_image.dart';
 import 'package:my_login_app/screens/home_screen.dart';
 import 'package:my_login_app/screens/inheritedWidgets/demo_color_change_with_inherited.dart';
+import 'package:my_login_app/screens/naviagtion_with_data.dart';
+import 'package:my_login_app/screens/slider_example.dart';
 import 'package:my_login_app/screens/sliver_list.dart';
 import 'package:my_login_app/screens/todo_api.dart';
+import 'package:my_login_app/screens/video.dart';
 import '../screens/grid.dart';
 import '../screens/list_view.dart';
 import '../screens/login.dart';
@@ -28,7 +33,7 @@ class AppRouter {
       case '/':
         return MaterialPageRoute(builder: (_) => const HomeScreen());
 
-        case '/listPage':
+      case '/listPage':
         return MaterialPageRoute(builder: (_) => const MyList());
 
       case '/formPage':
@@ -40,17 +45,41 @@ class AppRouter {
       case '/imageAssets':
         return MaterialPageRoute(builder: (_) => const ImageAssets());
 
-        case '/httpPage':
+      case '/httpPage':
         return MaterialPageRoute(builder: (_) => const TodoApi());
 
       case '/imagePickerPage':
         return MaterialPageRoute(builder: (_) => const GalleryImage());
 
-        case '/inheritedPage':
-        return MaterialPageRoute(builder: (_) => const DemoColorChangeWithInherited());
+      case '/inheritedPage':
+        return MaterialPageRoute(
+            builder: (_) => const DemoColorChangeWithInherited());
 
       case '/sliverListPage':
         return MaterialPageRoute(builder: (_) => const ChatPage());
+
+      case '/videoPage':
+        return MaterialPageRoute(builder: (_) => const VideoExample());
+
+      case '/navigationPage':
+        return MaterialPageRoute(builder: (_) => const NavigationWithData());
+
+      case '/appDrawerPage':
+        return MaterialPageRoute(builder: (_) => const DrawerExample());
+
+      case '/bottomSheetPage':
+        return MaterialPageRoute(builder: (_) => const BottomTabExample());
+
+        case '/sliderPage':
+        return MaterialPageRoute(builder: (_) => const SliderExample());
+
+      case '/newScreen':
+        var formData = settings.arguments as Map<String, String>;
+        return MaterialPageRoute(
+            builder: (_) => NewScreen(
+                  name: formData['name'].toString(),
+                  dob: formData['dob'].toString(),
+                ));
 
       default:
         return MaterialPageRoute(builder: (BuildContext context) {
