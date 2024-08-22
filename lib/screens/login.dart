@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:my_login_app/screens/sliver_list.dart';
 import 'package:my_login_app/screens/todo_api.dart';
-
+import 'package:my_login_app/utils/validator.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -24,6 +24,7 @@ class _LoginState extends State<Login> {
   final TextEditingController _phoneNumber = TextEditingController();
 
   var users = <String, List<String>>{};
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,9 +33,12 @@ class _LoginState extends State<Login> {
         child: Scaffold(
           appBar: AppBar(
             title: const Text("My Login App"),
-            leading: IconButton(icon:const Icon(Icons.home),onPressed: (){
-              Navigator.pop(context);
-            },),
+            leading: IconButton(
+              icon: const Icon(Icons.home),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             actions: [
               IconButton(
                 icon: const Icon(Icons.search),
@@ -52,7 +56,7 @@ class _LoginState extends State<Login> {
                 child: Text("Sign up"),
               )
             ]),
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.greenAccent,
           ),
           body: TabBarView(children: [
             Form(
@@ -72,23 +76,27 @@ class _LoginState extends State<Login> {
                     Container(
                       margin: const EdgeInsets.all(10),
                       width: 300,
-                      child: TextField(
+                      child: TextFormField(
                         controller: _name,
                         decoration: const InputDecoration(
                           hintText: 'Please enter your name ',
                           label: Text('Name'),
                         ),
+                        validator: (value) => Validator.validateName(value!),
+                        autovalidateMode: AutovalidateMode.onUnfocus,
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.all(10),
                       width: 300,
-                      child: TextField(
+                      child: TextFormField(
                         controller: _email,
                         decoration: const InputDecoration(
                           hintText: 'Please enter your email ',
                           label: Text('Email'),
                         ),
+                        validator: (value) => Validator.validateEmail(value!),
+                        autovalidateMode: AutovalidateMode.onUnfocus,
                       ),
                     ),
                     SizedBox(
@@ -96,7 +104,12 @@ class _LoginState extends State<Login> {
                       child: FloatingActionButton(
                           child: const Text('Submit'),
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => const TodoApi()));
+                            if (_loginFormKey.currentState!.validate()) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const TodoApi()));
+                            }
                           }),
                     )
                   ],
@@ -120,34 +133,40 @@ class _LoginState extends State<Login> {
                     Container(
                       margin: const EdgeInsets.all(10),
                       width: 300,
-                      child: TextField(
+                      child: TextFormField(
                         controller: _name,
                         decoration: const InputDecoration(
                           hintText: 'Please enter your name ',
                           label: Text('Name'),
                         ),
+                        validator: (value) => Validator.validateName(value!),
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.all(10),
                       width: 300,
-                      child: TextField(
+                      child: TextFormField(
                         controller: _email,
                         decoration: const InputDecoration(
                           hintText: 'Please enter your email ',
                           label: Text('Email'),
                         ),
+                        validator: (value) => Validator.validateEmail(value!),
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.all(10),
                       width: 300,
-                      child: TextField(
+                      child: TextFormField(
                         controller: _age,
                         decoration: const InputDecoration(
                           hintText: 'Please enter your Age ',
                           label: Text('Age'),
                         ),
+                        validator: (value) => Validator.validateAge(value!),
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         keyboardType: TextInputType.number,
                       ),
                     ),
@@ -195,71 +214,88 @@ class _LoginState extends State<Login> {
                     Container(
                       margin: const EdgeInsets.all(10),
                       width: 300,
-                      child: TextField(
+                      child: TextFormField(
                         controller: _phoneNumber,
                         decoration: const InputDecoration(
                           hintText: 'Please enter your mobile number ',
                           label: Text('Phone No.'),
                         ),
+                        validator: (value) =>
+                            Validator.validatePhoneNumber(value!),
+                        autovalidateMode: AutovalidateMode.always,
                         keyboardType: TextInputType.number,
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 20),
+                      margin: const EdgeInsets.only(top: 10),
                       width: 300,
                       child: FloatingActionButton(
                           child: const Text('Submit'),
                           onPressed: () {
-                            showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                title: const Center(child: Text("User Info")),
-                                content: SizedBox(
-                                  height: 250,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Name: ${_name.text}',
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                          )),
-                                      Text('Email: ${_email.text}',
-                                          style: const TextStyle(fontSize: 18)),
-                                      Text('Age: ${_age.text}',
-                                          style: const TextStyle(fontSize: 18)),
-                                      Text('Phone No.: ${_phoneNumber.text}',
-                                          style: const TextStyle(fontSize: 18))
-                                    ],
+                            if (_registerFormKey.currentState!.validate()) {
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: const Center(child: Text("User Info")),
+                                  content: SizedBox(
+                                    height: 250,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Name: ${_name.text}',
+                                            style: const TextStyle(
+                                              fontSize: 18,
+                                            )),
+                                        Text('Email: ${_email.text}',
+                                            style:
+                                                const TextStyle(fontSize: 18)),
+                                        Text('Age: ${_age.text}',
+                                            style:
+                                                const TextStyle(fontSize: 18)),
+                                        Text('Phone No.: ${_phoneNumber.text}',
+                                            style:
+                                                const TextStyle(fontSize: 18))
+                                      ],
+                                    ),
                                   ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: const Text('Ok'),
+                                      onPressed: () {
+                                        users[_phoneNumber.text] = [
+                                          _name.text,
+                                          _email.text,
+                                          _gender.toString()
+                                        ];
+                                        _name.clear();
+                                        _age.clear();
+                                        _email.clear();
+                                        _phoneNumber.clear();
+                                        _gender = Gender.male;
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const ChatPage()));
+                                      },
+                                    ),
+                                    TextButton(
+                                      child: const Text('Cancel'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    ),
+                                  ],
                                 ),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: const Text('Ok'),
-                                    onPressed: () {
-                                      users[_phoneNumber.text] = [
-                                        _name.text,
-                                        _email.text,
-                                        _gender.toString()
-                                      ];
-                                      _name.clear();
-                                      _age.clear();
-                                      _email.clear();
-                                      _phoneNumber.clear();
-                                      _gender = Gender.male;
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage()));
-                                    },
-                                  ),
-                                  TextButton(
-                                    child: const Text('Cancel'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              ),
-                              barrierDismissible: false,
-                            );
+                                barrierDismissible: false,
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(errorSnackBar);
+                            }
                           }),
                     )
                   ],
@@ -271,4 +307,9 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+
+  final errorSnackBar =  const SnackBar(
+    content: Text("Please enter a value"),
+    showCloseIcon: true,
+  );
 }

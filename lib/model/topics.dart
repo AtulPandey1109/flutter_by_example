@@ -22,8 +22,10 @@ class Topics{
     Topics(id:9,title: 'Video Player',route: '/videoPage'),
     Topics(id:10,title: 'Navigation With Data',route: '/navigationPage'),
     Topics(id:11,title: 'AppDrawer Example',route: '/appDrawerPage'),
-    Topics(id:11,title: 'BottomSheet Example',route: '/bottomSheetPage'),
-    Topics(id:11,title: 'Slider Example',route: '/sliderPage'),
+    Topics(id:12,title: 'BottomSheet Example',route: '/bottomSheetPage'),
+    Topics(id:13,title: 'Slider Example',route: '/sliderPage'),
+    Topics(id:14,title: 'Time Picker Example',route: '/timePickerPage'),
+    Topics(id:15,title: 'Login With Shared Preferences',route: '/sharedPreferencePage'),
    ];
 }
 }

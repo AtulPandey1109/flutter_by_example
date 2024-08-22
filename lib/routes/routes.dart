@@ -5,11 +5,14 @@ import 'package:my_login_app/screens/image_assets.dart';
 import 'package:my_login_app/screens/gallery_image.dart';
 import 'package:my_login_app/screens/home_screen.dart';
 import 'package:my_login_app/screens/inheritedWidgets/demo_color_change_with_inherited.dart';
-import 'package:my_login_app/screens/naviagtion_with_data.dart';
+import 'package:my_login_app/screens/login_with_shared_preference.dart';
+import 'package:my_login_app/screens/navigation_with_data.dart';
 import 'package:my_login_app/screens/slider_example.dart';
 import 'package:my_login_app/screens/sliver_list.dart';
+import 'package:my_login_app/screens/time_picker_example.dart';
 import 'package:my_login_app/screens/todo_api.dart';
 import 'package:my_login_app/screens/video.dart';
+import 'package:my_login_app/utils/handleLogIn.dart';
 import '../screens/grid.dart';
 import '../screens/list_view.dart';
 import '../screens/login.dart';
@@ -70,8 +73,14 @@ class AppRouter {
       case '/bottomSheetPage':
         return MaterialPageRoute(builder: (_) => const BottomTabExample());
 
-        case '/sliderPage':
+      case '/sliderPage':
         return MaterialPageRoute(builder: (_) => const SliderExample());
+
+      case '/timePickerPage':
+        return MaterialPageRoute(builder: (_) => const TimePickerExample());
+
+        case '/sharedPreferencePage':
+        return MaterialPageRoute(builder: (_) => const HandleLogIn());
 
       case '/newScreen':
         var formData = settings.arguments as Map<String, String>;
