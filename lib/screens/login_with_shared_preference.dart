@@ -16,14 +16,15 @@ class _LoginWithSharedPreferenceState extends State<LoginWithSharedPreference> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   bool doRemember = false;
+  bool showPassword=false;
 
   Future<void> addUser() async {
     final pref = await SharedPreferences.getInstance();
     pref.setString("UserEmail", _email.text);
-
   }
-  Future<void> addPref() async{
-    if(doRemember){
+
+  Future<void> addPref() async {
+    if (doRemember) {
       final pref = await SharedPreferences.getInstance();
       pref.setBool("isSaved", true);
     }
@@ -75,9 +76,15 @@ class _LoginWithSharedPreferenceState extends State<LoginWithSharedPreference> {
                   width: 300,
                   child: TextFormField(
                     controller: _password,
-                    decoration: const InputDecoration(
+                    obscureText: !showPassword,
+                    decoration: InputDecoration(
                       hintText: 'Please enter your email ',
-                      label: Text('Password'),
+                      label: const Text('Password'),
+                      suffixIcon: IconButton(onPressed: (){
+                        setState(() {
+                          showPassword=!showPassword;
+                        });
+                      }, icon: showPassword==false?const Icon(Icons.remove_red_eye):const Icon(Icons.cancel_rounded))
                     ),
                     validator: (value) {
                       return value!.isEmpty ? "Please enter password" : null;
@@ -86,18 +93,18 @@ class _LoginWithSharedPreferenceState extends State<LoginWithSharedPreference> {
                   ),
                 ),
                 Container(
-                    margin: const EdgeInsets.all(10),
-                    width: 300,
-                    child: CheckboxListTile(
-                        value: doRemember,
-                        onChanged: (value) {
-                          setState(() {
-                            doRemember = value!;
-                          });
-                        },
+                  margin: const EdgeInsets.all(10),
+                  width: 300,
+                  child: CheckboxListTile(
                     title: const Text("remember me"),
-                    ),
-
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: doRemember,
+                    onChanged: (value) {
+                      setState(() {
+                        doRemember = value!;
+                      });
+                    },
+                  ),
                 ),
                 SizedBox(
                   width: 300,
@@ -108,9 +115,12 @@ class _LoginWithSharedPreferenceState extends State<LoginWithSharedPreference> {
                           addUser();
                           addPref();
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const UserScreen()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const UserScreen(),
+                            ),
+                          );
+                          _password.clear();
                         }
                       }),
                 )

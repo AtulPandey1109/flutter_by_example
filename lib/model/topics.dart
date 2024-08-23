@@ -26,6 +26,8 @@ class Topics{
     Topics(id:13,title: 'Slider Example',route: '/sliderPage'),
     Topics(id:14,title: 'Time Picker Example',route: '/timePickerPage'),
     Topics(id:15,title: 'Login With Shared Preferences',route: '/sharedPreferencePage'),
+    Topics(id:16,title: 'Local Database',route: '/localDatabase'),
+    Topics(id:17,title: 'Local Database using SqlLite',route: '/sqlDatabase'),
    ];
 }
 }

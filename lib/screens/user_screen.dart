@@ -37,15 +37,15 @@ class _UserScreenState extends State<UserScreen> {
         leading: IconButton(
           icon: const Icon(Icons.home),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.popUntil(context, (route){
+              return route.settings.name=='/';
+            });
           },
         ),
       actions: [
         IconButton(onPressed: (){
           removeUser();
-          Navigator.popUntil(context, (route){
-            return route.settings.name=='/';
-          });
+          Navigator.pop(context);
         }, icon: const Icon(Icons.logout))
       ],
       ),
