@@ -1,5 +1,3 @@
-import 'package:my_login_app/model/mydb.dart';
-
 class Dairy {
   final int id;
   final String title;
@@ -18,7 +16,7 @@ class Dairy {
 factory Dairy.fromSql(Map<String,dynamic> map)=>Dairy(
       id:map['id'].toInt()??0,
       title:map['title']??'',
-      content:map['content'],
-      createdAt: map['createdAt']
+      content:map['content']??'',
+      createdAt: map['created_at'] ?? DateTime.now()
   );
 }

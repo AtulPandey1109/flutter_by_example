@@ -9,7 +9,7 @@ class MyDb{
 
   Future<void> createTable(Database database) async{
     await database.execute( """
-      CREATE TABLE IF NOT EXITS $table(
+      CREATE TABLE IF NOT EXISTS $table(
       "id" INTEGER NOT NULL,
       "title" TEXT NOT NULL,
       "content" TEXT NOT NULL,
@@ -36,5 +36,23 @@ class MyDb{
     ''');
     return  dairies.map((dairy)=>Dairy.fromSql(dairy)).toList();
   }
+
+  Future<void> deletePage(int id) async{
+    final db = await LocalDatabase().database;
+    await db.rawDelete('''
+    DELETE FROM $table WHERE id =?
+    ''',[id]);
+  }
+Future<void> update({required int id, String? title, String? content  }) async{
+  final db = await LocalDatabase().database;
+  int test=await db.update(table,{
+    if(title!=null)'title':title,
+    if(content!=null) 'content':content
+  },
+  where: 'id =?',
+    whereArgs: [id],
+    conflictAlgorithm: ConflictAlgorithm.rollback
+  );
+}
 
 }
