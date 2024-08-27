@@ -36,7 +36,7 @@ class _LocalStorageState extends State<LocalStorage> {
         _content.text=contents;
       });
     } catch (e) {
-      print('Nothing stored');
+      return;
     }
   }
   void shareFile() async{

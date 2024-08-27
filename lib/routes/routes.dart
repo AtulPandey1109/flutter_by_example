@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_login_app/screens/bloc%20example/home/bloc_home_screen.dart';
 import 'package:my_login_app/screens/bottom_tab_example.dart';
 import 'package:my_login_app/screens/drawer_example.dart';
 import 'package:my_login_app/screens/image_assets.dart';
@@ -88,6 +89,9 @@ class AppRouter {
 
         case '/sqlDatabase':
         return MaterialPageRoute(builder: (_) => const MyDairy());
+
+        case '/flutterBloc':
+        return MaterialPageRoute(builder: (_) => const BlocHomeScreen());
 
       case '/newScreen':
         var formData = settings.arguments as Map<String, String>;

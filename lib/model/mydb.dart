@@ -45,7 +45,7 @@ class MyDb{
   }
 Future<void> update({required int id, String? title, String? content  }) async{
   final db = await LocalDatabase().database;
-  int test=await db.update(table,{
+ await db.update(table,{
     if(title!=null)'title':title,
     if(content!=null) 'content':content
   },

@@ -13,7 +13,7 @@ class _MyDairyState extends State<MyDairy> {
   Future<List<Dairy>>? pages;
   final db = MyDb();
 
-  final GlobalKey<FormState> _formKey = GlobalKey();
+  // final GlobalKey<FormState> _formKey = GlobalKey();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _contentController = TextEditingController();
 
@@ -78,7 +78,6 @@ class _MyDairyState extends State<MyDairy> {
                       setState(() {
                         pages = MyDb().fetchDairies();
                       });
-                      Navigator.pop(context);
                     },
                     icon: const Icon(Icons.edit)),
                 IconButton(
