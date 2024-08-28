@@ -34,9 +34,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   FutureOr<void> deleteButtonEvent(
-      DeleteButtonEvent event, Emitter<HomeState> emit) {
+      DeleteButtonEvent event, Emitter<HomeState> emit) async{
+    emit(HomeLoadedState(
+        isLoading: true,
+        index: event.index,
+        todos: Data.todos
+        .map((e) => Todo(id: e['id'], title: e['title'], date: e['date']))
+        .toList()));
+    await Future.delayed(const Duration(seconds: 1));
     Data.todos.removeAt(event.index);
     emit(HomeLoadedState(
+      isLoading: false,
         todos: Data.todos
             .map((e) => Todo(id: e['id'], title: e['title'], date: e['date']))
             .toList()));
