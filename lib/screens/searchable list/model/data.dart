@@ -1,0 +1,86 @@
+class Data{
+  static List<Map<String,dynamic>> users =[
+    {
+      'username': 'Alice',
+      'age': 25,
+      'isActive': true,
+      'lastLogin': DateTime.now(),
+      'balance': 150.75,
+    },
+    {
+      'username': 'Bob',
+      'age': 30,
+      'isActive': false,
+      'lastLogin': DateTime.now().subtract(const Duration(days: 1)),
+      'balance': 200.00,
+    },
+    {
+      'username': 'Charlie',
+      'age': 22,
+      'isActive': true,
+      'lastLogin': DateTime.now(),
+      'balance': 50.00,
+    },
+    {
+      'username': 'Diana',
+      'age': 29,
+      'isActive': true,
+      'lastLogin': DateTime.now().subtract(const Duration(days: 2)),
+      'balance': 300.45,
+    },
+    {
+      'username': 'Eve',
+      'age': 35,
+      'isActive': false,
+      'lastLogin': DateTime.now().subtract(const Duration(days: 3)),
+      'balance': 75.00,
+    },
+    {
+      'username': 'Frank',
+      'age': 27,
+      'isActive': true,
+      'lastLogin': DateTime.now(),
+      'balance': 120.00,
+    },
+    {
+      'username': 'Grace',
+      'age': 31,
+      'isActive': true,
+      'lastLogin': DateTime.now().subtract(const Duration(days: 4)),
+      'balance': 250.30,
+    },
+    {
+      'username': 'Hank',
+      'age': 24,
+      'isActive': false,
+      'lastLogin': DateTime.now().subtract(const Duration(days: 5)),
+      'balance': 90.00,
+    },
+    {
+      'username': 'Ivy',
+      'age': 28,
+      'isActive': true,
+      'lastLogin': DateTime.now(),
+      'balance': 180.50,
+    },
+    {
+      'username': 'Jack',
+      'age': 33,
+      'isActive': false,
+      'lastLogin': DateTime.now().subtract(const Duration(days: 6)),
+      'balance': 60.00,
+    },{
+      'username': 'Atul',
+      'age': 24,
+      'isActive': false,
+      'lastLogin': DateTime.now().subtract(const Duration(days: 3)),
+      'balance': 600.00,
+    },{
+      'username': 'Rohan',
+      'age': 22,
+      'isActive': false,
+      'lastLogin': DateTime.now().subtract(const Duration(days: 3)),
+      'balance': 500.00,
+    },
+  ] ;
+}

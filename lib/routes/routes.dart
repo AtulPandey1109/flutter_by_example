@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:my_login_app/screens/bloc%20example/home/bloc_home_screen.dart';
 import 'package:my_login_app/screens/bottom_tab_example.dart';
 import 'package:my_login_app/screens/drawer_example.dart';
+import 'package:my_login_app/screens/geo_page.dart';
 import 'package:my_login_app/screens/image_assets.dart';
 import 'package:my_login_app/screens/gallery_image.dart';
 import 'package:my_login_app/screens/home_screen.dart';
 import 'package:my_login_app/screens/inheritedWidgets/demo_color_change_with_inherited.dart';
 import 'package:my_login_app/screens/local_storage.dart';
+import 'package:my_login_app/screens/login%20bloc/login_page.dart';
 import 'package:my_login_app/screens/my_dairy.dart';
 import 'package:my_login_app/screens/navigation_with_data.dart';
+import 'package:my_login_app/screens/searchable%20list/SearchableList.dart';
 import 'package:my_login_app/screens/slider_example.dart';
 import 'package:my_login_app/screens/sliver_list.dart';
+import 'package:my_login_app/screens/staggered%20grid/home_screen.dart';
 import 'package:my_login_app/screens/time_picker_example.dart';
+import 'package:my_login_app/screens/timer_bloc/timer.dart';
 import 'package:my_login_app/screens/todo_api.dart';
 import 'package:my_login_app/screens/video.dart';
 import 'package:my_login_app/utils/handle_login.dart';
@@ -92,6 +97,21 @@ class AppRouter {
 
         case '/flutterBloc':
         return MaterialPageRoute(builder: (_) => const BlocHomeScreen());
+
+        case '/staggeredView':
+        return MaterialPageRoute(builder: (_) => const StaggeredPage());
+
+        case '/timerBloc':
+        return MaterialPageRoute(builder: (_) => const TimerPage());
+
+        case '/loginBloc':
+        return MaterialPageRoute(builder: (_) =>  LoginPage());
+
+        case '/searchableList':
+        return MaterialPageRoute(builder: (_) => const SearchableList());
+
+        case '/geoPage':
+        return MaterialPageRoute(builder: (_) =>  const GeoPage());
 
       case '/newScreen':
         var formData = settings.arguments as Map<String, String>;

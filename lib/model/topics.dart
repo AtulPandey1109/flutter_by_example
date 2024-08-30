@@ -29,6 +29,11 @@ class Topics{
     Topics(id:16,title: 'Local Database',route: '/localDatabase'),
     Topics(id:17,title: 'Local Database using SqlLite',route: '/sqlDatabase'),
     Topics(id:18,title: 'Flutter BLoC',route: '/flutterBloc'),
+    Topics(id:19,title: 'Flutter Staggered Grid View',route: '/staggeredView'),
+    Topics(id:20,title: 'Timer Bloc',route: '/timerBloc'),
+    Topics(id:21,title: 'Login Bloc',route: '/loginBloc'),
+    Topics(id:22,title: 'Searchable List Using Bloc',route: '/searchableList'),
+    Topics(id:23,title: 'GeoLocator example',route: '/geoPage'),
    ];
 }
 }
