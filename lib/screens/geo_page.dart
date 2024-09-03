@@ -29,7 +29,6 @@ class _GeoPageState extends State<GeoPage> {
     super.initState();
   }
 
-  void dispose
 
   Future<void> _getLocation() async {
     try {

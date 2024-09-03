@@ -3,6 +3,7 @@ import 'package:my_login_app/screens/bloc%20example/home/bloc_home_screen.dart';
 import 'package:my_login_app/screens/bottom_tab_example.dart';
 import 'package:my_login_app/screens/drawer_example.dart';
 import 'package:my_login_app/screens/geo_page.dart';
+import 'package:my_login_app/screens/hive_example.dart';
 import 'package:my_login_app/screens/image_assets.dart';
 import 'package:my_login_app/screens/gallery_image.dart';
 import 'package:my_login_app/screens/home_screen.dart';
@@ -11,15 +12,18 @@ import 'package:my_login_app/screens/local_storage.dart';
 import 'package:my_login_app/screens/login%20bloc/login_page.dart';
 import 'package:my_login_app/screens/my_dairy.dart';
 import 'package:my_login_app/screens/navigation_with_data.dart';
+import 'package:my_login_app/screens/retrofit/app.dart';
 import 'package:my_login_app/screens/searchable%20list/SearchableList.dart';
 import 'package:my_login_app/screens/slider_example.dart';
 import 'package:my_login_app/screens/sliver_list.dart';
+import 'package:my_login_app/screens/splash_screen.dart';
 import 'package:my_login_app/screens/staggered%20grid/home_screen.dart';
 import 'package:my_login_app/screens/time_picker_example.dart';
 import 'package:my_login_app/screens/timer_bloc/timer.dart';
 import 'package:my_login_app/screens/todo_api.dart';
 import 'package:my_login_app/screens/video.dart';
 import 'package:my_login_app/utils/handle_login.dart';
+import '../screens/dio /dio_example.dart';
 import '../screens/grid.dart';
 import '../screens/list_view.dart';
 import '../screens/login.dart';
@@ -41,6 +45,9 @@ class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case '/':
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
+
+        case '/home':
         return MaterialPageRoute(builder: (_) => const HomeScreen());
 
       case '/listPage':
@@ -112,6 +119,15 @@ class AppRouter {
 
         case '/geoPage':
         return MaterialPageRoute(builder: (_) =>  const GeoPage());
+
+        case '/dioPage':
+        return MaterialPageRoute(builder: (_) =>  const DoiExample());
+
+        case '/hivePage':
+        return MaterialPageRoute(builder: (_) =>  const HiveExample());
+
+        case '/retrofitPage':
+        return MaterialPageRoute(builder: (_) =>   RetroFitExample());
 
       case '/newScreen':
         var formData = settings.arguments as Map<String, String>;

@@ -34,6 +34,9 @@ class Topics{
     Topics(id:21,title: 'Login Bloc',route: '/loginBloc'),
     Topics(id:22,title: 'Searchable List Using Bloc',route: '/searchableList'),
     Topics(id:23,title: 'GeoLocator example',route: '/geoPage'),
+    Topics(id:24,title: 'Dio Example',route: '/dioPage'),
+    Topics(id:25,title: 'Hive Example',route: '/hivePage'),
+    Topics(id:25,title: 'Retrofit Example',route: '/retrofitPage'),
    ];
 }
 }

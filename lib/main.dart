@@ -1,13 +1,23 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_login_app/firebase_options.dart';
+import 'package:my_login_app/message_service.dart';
 import 'package:my_login_app/routes/routes.dart';
-import 'package:my_login_app/screens/home_screen.dart';
+import 'package:my_login_app/screens/dio%20/dio_bloc/dio_bloc.dart';
 import 'package:my_login_app/screens/login%20bloc/bloc/login_bloc.dart';
 import 'package:my_login_app/screens/searchable%20list/bloc/search_bloc.dart';
+import 'package:my_login_app/screens/splash_screen.dart';
 import 'package:my_login_app/screens/timer_bloc/bloc/timer_bloc.dart';
 import 'package:my_login_app/screens/timer_bloc/ticker.dart';
 
-void main() {
+
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  MessagingService().localInit();
   runApp(const MyApp());
 }
 
@@ -20,6 +30,7 @@ class MyApp extends StatelessWidget {
        BlocProvider(create: (context)=>TimerBloc(ticker: const Ticker()),),
        BlocProvider(create: (context)=>LoginBloc(),),
        BlocProvider(create: (context)=>SearchBloc(),),
+       BlocProvider(create: (context)=>DioBloc(),),
      ],
      child: MaterialApp(
        theme: ThemeData(
@@ -28,7 +39,7 @@ class MyApp extends StatelessWidget {
        ),
        themeMode: ThemeMode.system,
        debugShowCheckedModeBanner: false,
-       home: const HomeScreen(),
+       home: const SplashScreen(),
        initialRoute: '/',
        onGenerateRoute: AppRouter.generateRoute,
      ),
