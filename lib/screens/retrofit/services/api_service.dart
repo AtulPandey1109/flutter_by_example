@@ -15,4 +15,8 @@ abstract class ApiService{
 
     @DELETE('/posts/{id}')
   Future<void> deletePost(@Path('id') int postId);
+
+    @PUT('/posts/{id}')
+  Future<PostModel> updatePost(@Path('id') int postId, @Body() PostModel post);
+
 }

@@ -20,6 +20,7 @@ class LoadingState extends DioStates{
 }
 
 class LoadedState extends DioStates{
+  @override
   final List<dynamic> books;
   const LoadedState({required this.books}):super(books: books);
 }

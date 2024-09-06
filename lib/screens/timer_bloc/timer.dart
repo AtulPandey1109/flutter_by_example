@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_login_app/screens/timer_bloc/ticker.dart';
 
 import 'bloc/timer_bloc.dart';
 
@@ -87,9 +86,7 @@ class _TimerPageState extends State<TimerPage> {
                             .add(TimerStarted(duration: state.duration)),
                       ),
                   ],
-                  _=>[
-                    const SizedBox()
-                  ]
+
                   }
                 ],
               );

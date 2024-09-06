@@ -101,6 +101,37 @@ class _ApiService implements ApiService {
         ))));
   }
 
+  @override
+  Future<PostModel> updatePost(
+    int postId,
+    PostModel post,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(post.toJson());
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<PostModel>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/posts/${postId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = PostModel.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

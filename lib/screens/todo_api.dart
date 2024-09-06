@@ -23,7 +23,7 @@ class _TodoApiState extends State<TodoApi> {
   void addTodo(Map<String, dynamic> data) async {
     Response res = await post(
         Uri.parse('https://jsonplaceholder.typicode.com/todos'),
-        body: data);
+        body: data,);
     debugPrint('${res.statusCode}');
     setState(() {
       todoMap.add(jsonDecode(res.body));

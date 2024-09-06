@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+
 
 class GeoPage extends StatefulWidget {
   const GeoPage({super.key});
@@ -11,33 +12,30 @@ class GeoPage extends StatefulWidget {
 
 class _GeoPageState extends State<GeoPage> {
   final GeolocatorPlatform _geoLocatorPlatform = GeolocatorPlatform.instance;
-  final YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: '9SRBX_MlqJw',
-    flags: const YoutubePlayerFlags(
-      mute: false,
-      autoPlay: true,
-      disableDragSeek: false,
-      loop: false,
-      isLive: false,
-      forceHD: false,
-      enableCaption: true,
-    ),
-  );
+
   Position? position;
   @override
   void initState() {
     super.initState();
   }
 
+  @override
+  void dispose(){
+    super.dispose();
+
+  }
 
   Future<void> _getLocation() async {
     try {
       LocationPermission permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.whileInUse) {
-        position = await _geoLocatorPlatform.getCurrentPosition(
-            locationSettings:
-                const LocationSettings(accuracy: LocationAccuracy.high));
+        setState(() async {
+          position = await _geoLocatorPlatform.getCurrentPosition(
+              locationSettings:
+              const LocationSettings(accuracy: LocationAccuracy.high));
+        });
         print(position);
+
       }
     } catch (e) {
       debugPrint('$e');
@@ -66,19 +64,6 @@ class _GeoPageState extends State<GeoPage> {
                   });
                 },
                 child: const Text("Get Location")),
-            Container(
-              height: 400,
-              child: YoutubePlayerBuilder(
-                player: YoutubePlayer(controller: _controller),
-                builder: (BuildContext, player) {
-                  return ListView(
-                    children: [
-                      player
-                    ],
-                  );
-                },
-              ),
-            )
           ],
         ),
       ),

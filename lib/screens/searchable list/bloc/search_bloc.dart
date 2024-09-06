@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:my_login_app/screens/searchable%20list/model/data.dart';
 
-import '';
 part 'search_event.dart';
 part 'search_state.dart';
 

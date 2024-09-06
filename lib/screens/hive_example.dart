@@ -17,7 +17,7 @@ class _HiveExampleState extends State<HiveExample> {
         }, icon: const Icon(Icons.arrow_back)),
         title: const Text("Hive Example"),
       ),
-      body: Center(),
+      body: const Center(),
     ));
   }
 }

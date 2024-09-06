@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:my_login_app/message_service.dart';
+import 'package:my_login_app/utils/constants.dart';
 import '../model/topics.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   static const TextStyle myTextStyle = TextStyle(
-      fontFamily: 'roboto', color: Color(0xff603F26), fontSize: 16
-  );
+      fontFamily: 'Montserrat',
+      fontStyle: FontStyle.normal,
+      fontWeight: FontWeight.w700,
+      color: Color(0xff603F26),
+      fontSize: 16);
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -19,54 +23,79 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     MessagingService().init(context);
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Center(child:  Text("Flutter By Example", style: TextStyle(fontFamily: 'roboto', color: Color(0xffFFF8E8), fontSize: 20),)),
-          backgroundColor: const Color(0xFFff6C4E31)
+          title: const Center(
+              child: Text(
+            "Flutter By Example",
+            style: TextStyle(
+                fontFamily: 'arial',
+                color: ColorConstants.textColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          )),
+          backgroundColor: ColorConstants.appBarColor,
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView.separated(
-              itemBuilder: (BuildContext context,int index){
-                final topics = Topics.getDetails();
-                return  Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.all(16),
-                      titleTextStyle: HomeScreen.myTextStyle,
-
-                      leading: CircleAvatar(
-                        radius: 24,
-                        backgroundColor: Color(0xff6C4E31), // Orange color
-                        child: Text(
-                          '${index + 1}',
-                          style: const TextStyle(color: Colors.white,fontSize: 20),
-                        ),
+        body: ListView.builder(
+            itemBuilder: (BuildContext context, int index) {
+              final topics = Topics.getDetails();
+              return Card(
+                elevation: 5,
+                margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                child: ListTile(
+                  titleTextStyle: HomeScreen.myTextStyle,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  leading: CircleAvatar(
+                    radius: 18,
+                    backgroundColor: ColorConstants
+                        .circularAvatarBackgroundColor, // Orange color
+                    child: Text(
+                      '${index + 1}',
+                      style: const TextStyle(
+                        color: ColorConstants.textColor,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w500
                       ),
-                      shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                      title: Text(topics[index].title),
-                      tileColor: Color(0xffFFF8E8),
-                      trailing: IconButton(icon:const Icon(Icons.arrow_forward_ios,size: 30,),onPressed: (){
-                        Navigator.pushNamed(context, topics[index].route);
-                      },),
-                      subtitle: const Text("Tap for more detail"),
-                      onTap: (){
-                  Navigator.pushNamed(context, topics[index].route);
-                  },
-
+                    ),
                   ),
-                );
-              },
-              separatorBuilder: (BuildContext context, int index){
-                return const SizedBox(height: 5,);
-              },
-              itemCount: Topics.getDetails().length),
-        ),
+                  title: Text(
+                    topics[index].title,
+                    style: const TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w700,
+                      color: ColorConstants.textColor,
+                    ),
+                  ),
+                  tileColor: ColorConstants.tileColor,
+                  trailing: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16,
+                      color: ColorConstants.textColor,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, topics[index].route);
+                    },
+                  ),
+                  subtitle: const Text(
+                    "Tap for more detail",
+                    style: TextStyle(color: ColorConstants.textColor, fontFamily: 'Montserrat',fontWeight: FontWeight.w200),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, topics[index].route);
+                  },
+                ),
+              );
+            },
+            itemCount: Topics.getDetails().length),
       ),
     );
   }
 }
-

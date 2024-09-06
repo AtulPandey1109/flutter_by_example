@@ -45,7 +45,9 @@ class _VideoExampleState extends State<VideoExample> {
           FutureBuilder(future: _initializeVideoPlayerFuture, builder: (context,snapshot){
             if(snapshot.connectionState==ConnectionState.done){
               return AspectRatio(aspectRatio: _videoController.value.aspectRatio,
-                child: VideoPlayer(_videoController),
+                child: GestureDetector(child: VideoPlayer(_videoController),onTap: (){
+                  _videoController.seekTo(const Duration(seconds: 2));
+                },),
               );
             } else {
               return const Center(

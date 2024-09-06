@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_login_app/firebase_options.dart';
 import 'package:my_login_app/message_service.dart';
 import 'package:my_login_app/routes/routes.dart';
@@ -18,7 +18,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   MessagingService().localInit();
-  runApp(const MyApp());
+  runApp(const ProviderScope(child:  MyApp()));
 }
 
 class MyApp extends StatelessWidget {

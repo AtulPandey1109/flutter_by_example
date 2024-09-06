@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_login_app/riverpod_example/app.dart';
 import 'package:my_login_app/screens/bloc%20example/home/bloc_home_screen.dart';
 import 'package:my_login_app/screens/bottom_tab_example.dart';
+import 'package:my_login_app/screens/change_notifier_example.dart';
 import 'package:my_login_app/screens/drawer_example.dart';
 import 'package:my_login_app/screens/geo_page.dart';
 import 'package:my_login_app/screens/hive_example.dart';
@@ -21,6 +24,7 @@ import 'package:my_login_app/screens/staggered%20grid/home_screen.dart';
 import 'package:my_login_app/screens/time_picker_example.dart';
 import 'package:my_login_app/screens/timer_bloc/timer.dart';
 import 'package:my_login_app/screens/todo_api.dart';
+import 'package:my_login_app/screens/value_notifier_example.dart';
 import 'package:my_login_app/screens/video.dart';
 import 'package:my_login_app/utils/handle_login.dart';
 import '../screens/dio /dio_example.dart';
@@ -128,6 +132,15 @@ class AppRouter {
 
         case '/retrofitPage':
         return MaterialPageRoute(builder: (_) =>   RetroFitExample());
+
+        case '/changeNotifier':
+        return MaterialPageRoute(builder: (_) =>  const MyListPage());
+
+        case '/valueNotifier':
+        return MaterialPageRoute(builder: (_) =>  const MyValueApp());
+
+        case '/riverPod':
+        return MaterialPageRoute(builder: (_) => const RiverPodExample());
 
       case '/newScreen':
         var formData = settings.arguments as Map<String, String>;

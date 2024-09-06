@@ -36,7 +36,10 @@ class Topics{
     Topics(id:23,title: 'GeoLocator example',route: '/geoPage'),
     Topics(id:24,title: 'Dio Example',route: '/dioPage'),
     Topics(id:25,title: 'Hive Example',route: '/hivePage'),
-    Topics(id:25,title: 'Retrofit Example',route: '/retrofitPage'),
+    Topics(id:26,title: 'Retrofit Example',route: '/retrofitPage'),
+    Topics(id:27,title: 'ChangeNotifier Example',route: '/changeNotifier'),
+    Topics(id:28,title: 'Providers Example',route: '/valueNotifier'),
+    Topics(id:29,title: 'RiverPod Example',route: '/riverPod'),
    ];
 }
 }

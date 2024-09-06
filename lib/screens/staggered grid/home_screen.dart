@@ -17,7 +17,7 @@ class _StaggeredPageState extends State<StaggeredPage> {
         appBar: AppBar(
           leading: IconButton(onPressed: (){
             Navigator.pop(context);
-          }, icon: Icon(Icons.arrow_back)),
+          }, icon: const Icon(Icons.arrow_back)),
           bottom: const TabBar(tabs: [
             Tab(
               text: 'With Max Cross Axis Extent',
@@ -30,7 +30,7 @@ class _StaggeredPageState extends State<StaggeredPage> {
         body: TabBarView(
           children: [
             MasonryGridView.builder(
-              gridDelegate: SliverSimpleGridDelegateWithMaxCrossAxisExtent(
+              gridDelegate: const SliverSimpleGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 300),
               itemCount: 10,
               itemBuilder: (BuildContext context, int index) {
@@ -38,7 +38,7 @@ class _StaggeredPageState extends State<StaggeredPage> {
                   child: Column(
                     children: [
                       Image.asset('images/pic${index+1}.png'),
-                      Text("${'Random dbfdf dfhdf'*(index+1) }"),
+                      Text('Random dbfdf dfhdf'*(index+1)),
                     ],
                   ),
                 );

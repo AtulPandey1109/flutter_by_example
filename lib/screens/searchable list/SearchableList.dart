@@ -92,7 +92,7 @@ class _SearchableListState extends State<SearchableList> {
                                   ),
                                 );
                               }, separatorBuilder: (BuildContext context, int index) {
-                              return SizedBox(height: 10,);
+                              return const SizedBox(height: 10,);
                             },
                             );
                           }
