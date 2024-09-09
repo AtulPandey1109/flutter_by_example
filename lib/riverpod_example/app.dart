@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_login_app/riverpod_example/cart_page.dart';
@@ -10,7 +11,13 @@ class RiverPodExample extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
     final products = ref.watch(productsProvider);
+    int quantity =0;
     final cart = ref.watch(cartNotifierProvider);
+    for(var item in cart.entries){
+      final qty =  item.value;
+      quantity = quantity+ qty;
+    }
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -30,13 +37,14 @@ class RiverPodExample extends ConsumerWidget {
                   top: 5,
                   child: CircleAvatar(
                 radius: 8,
-                child: Text('${cart.length}',style: const TextStyle(fontSize: 8),),
+                child: Text('$quantity',style: const TextStyle(fontSize: 8),),
               ))
             ],
           )
         ],
       ),
       body: GridView.builder(
+        physics: const ClampingScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2),
           itemBuilder: (context, index) {
