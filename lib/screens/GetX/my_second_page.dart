@@ -11,6 +11,12 @@ class MySecondPage extends StatefulWidget {
 
 class _MySecondPageState extends State<MySecondPage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    Data().getData();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     final BooksControllers bookData = Get.find();
     return Scaffold(
@@ -70,6 +76,14 @@ class _MySecondPageState extends State<MySecondPage> {
         bookData.getBooks();
       }),
     );
+  }
+}
+
+class Data extends GetConnect{
+  Future<List<dynamic>> getData() async{
+    final res = await get('https://book-store-y7uv-6vsha0a5u-atulp1109.vercel.app/books');
+    print(res.body['data']);
+    return res.body['data'];
   }
 }
 

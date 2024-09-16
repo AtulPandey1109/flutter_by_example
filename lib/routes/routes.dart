@@ -7,6 +7,7 @@ import 'package:my_login_app/screens/bottom_tab_example.dart';
 import 'package:my_login_app/screens/change_notifier_example.dart';
 import 'package:my_login_app/screens/drawer_example.dart';
 import 'package:my_login_app/screens/geo_page.dart';
+import 'package:my_login_app/screens/getx%20login/app.dart';
 import 'package:my_login_app/screens/hive_example.dart';
 import 'package:my_login_app/screens/image_assets.dart';
 import 'package:my_login_app/screens/gallery_image.dart';
@@ -148,6 +149,9 @@ class AppRouter {
 
         case '/getX':
         return MaterialPageRoute(builder: (_) => const GetXExample());
+
+        case '/getLoginForm':
+        return MaterialPageRoute(builder: (_) => const GetXApp());
 
       case '/newScreen':
         var formData = settings.arguments as Map<String, String>;

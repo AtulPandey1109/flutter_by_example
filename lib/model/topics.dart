@@ -42,6 +42,7 @@ class Topics{
     Topics(id:30,title: 'RiverPod Example',route: '/riverPod'),
     Topics(id:31,title: 'RxDart Example',route: '/rxdart'),
     Topics(id:32,title: 'GetX Example',route: '/getX'),
+    Topics(id:33,title: 'GetX Login Form',route: '/getLoginForm'),
    ];
 }
 }

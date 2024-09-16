@@ -29,6 +29,9 @@ class _GetXExampleState extends State<GetXExample> {
     return GetMaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          leading: IconButton(onPressed: (){
+            Navigator.pop(context);
+          }, icon: const Icon(Icons.arrow_back)),
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
