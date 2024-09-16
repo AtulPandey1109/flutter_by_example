@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_login_app/screens/searchable%20list/bloc/search_bloc.dart';
-import 'package:my_login_app/screens/searchable%20list/model/data.dart';
 
 class SearchableList extends StatefulWidget {
   const SearchableList({super.key});

@@ -41,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: ColorConstants.appBarColor,
         ),
         body: ListView.builder(
+          physics: const ClampingScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
               final topics = Topics.getDetails();
               return Card(

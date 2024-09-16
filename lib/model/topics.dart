@@ -39,7 +39,9 @@ class Topics{
     Topics(id:26,title: 'Retrofit Example',route: '/retrofitPage'),
     Topics(id:27,title: 'ChangeNotifier Example',route: '/changeNotifier'),
     Topics(id:28,title: 'Providers Example',route: '/valueNotifier'),
-    Topics(id:29,title: 'RiverPod Example',route: '/riverPod'),
+    Topics(id:30,title: 'RiverPod Example',route: '/riverPod'),
+    Topics(id:31,title: 'RxDart Example',route: '/rxdart'),
+    Topics(id:32,title: 'GetX Example',route: '/getX'),
    ];
 }
 }

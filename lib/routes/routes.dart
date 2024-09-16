@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_login_app/riverpod_example/app.dart';
+import 'package:my_login_app/screens/GetX/app.dart';
+import 'package:my_login_app/screens/RxDart/app.dart';
 import 'package:my_login_app/screens/bloc%20example/home/bloc_home_screen.dart';
 import 'package:my_login_app/screens/bottom_tab_example.dart';
 import 'package:my_login_app/screens/change_notifier_example.dart';
@@ -141,6 +142,12 @@ class AppRouter {
 
         case '/riverPod':
         return MaterialPageRoute(builder: (_) => const RiverPodExample());
+
+        case '/rxdart':
+        return MaterialPageRoute(builder: (_) => const RxDartExample());
+
+        case '/getX':
+        return MaterialPageRoute(builder: (_) => const GetXExample());
 
       case '/newScreen':
         var formData = settings.arguments as Map<String, String>;

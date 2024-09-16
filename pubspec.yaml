@@ -59,7 +59,8 @@ dependencies:
   provider:
   flutter_riverpod:
   riverpod_annotation:
-
+  rxdart: ^0.28.0
+  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:
