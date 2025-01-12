@@ -13,6 +13,7 @@ import 'package:my_login_app/screens/image_assets.dart';
 import 'package:my_login_app/screens/gallery_image.dart';
 import 'package:my_login_app/screens/home_screen.dart';
 import 'package:my_login_app/screens/inheritedWidgets/demo_color_change_with_inherited.dart';
+import 'package:my_login_app/screens/local_auth/main.dart';
 import 'package:my_login_app/screens/local_storage.dart';
 import 'package:my_login_app/screens/login%20bloc/login_page.dart';
 import 'package:my_login_app/screens/my_dairy.dart';
@@ -160,6 +161,10 @@ class AppRouter {
                   name: formData['name'].toString(),
                   dob: formData['dob'].toString(),
                 ));
+
+      case '/localAuth':
+        return MaterialPageRoute(
+            builder: (_) => const LocalAuthMain());
 
       default:
         return MaterialPageRoute(builder: (BuildContext context) {

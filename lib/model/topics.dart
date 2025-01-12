@@ -43,6 +43,7 @@ class Topics{
     Topics(id:31,title: 'RxDart Example',route: '/rxdart'),
     Topics(id:32,title: 'GetX Example',route: '/getX'),
     Topics(id:33,title: 'GetX Login Form',route: '/getLoginForm'),
+    Topics(id:34,title: 'Local Auth',route: '/localAuth'),
    ];
 }
 }

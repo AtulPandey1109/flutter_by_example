@@ -5,7 +5,7 @@ part 'cart_provider.g.dart';
 @riverpod
 class CartNotifier extends _$CartNotifier{
   @override
-  Map<Product, int> build() {
+  build() {
     return {};
   }
 
